@@ -1,0 +1,44 @@
+// Assignment_No_4
+/*Write a C++ program that creates an output file, writes information to it, closes the file, open it
+again as an input file and read the information from the file.*/
+
+//INPUT CODE
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+int main()
+{
+	ofstream outfile;
+	outfile.open("a1.txt",ios::app);
+	string s;
+	while(1)
+	{
+		int ch;
+		cout<<"Menu\n\n";
+		cout<<"1.Enter data\n2.exit and display data"<<endl;
+		cin>>ch;
+		if(ch==1)
+		{
+			cout<<"Enter the data "<<endl;
+			cin.get();
+			getline(cin,s);
+			outfile<<s<<endl;
+		}
+		 else if(ch==2)
+		 {
+		 	cout<<"Exited"<<endl;
+		 	break;
+		 }
+		
+	}
+	 outfile.close();
+	 ifstream infile("a1.txt",ios::in );
+	 cout<<"\n\n\n___________File content___________ "<<endl;
+	 while(!infile.eof())
+	 {
+	 	getline(infile,s);
+	 	cout<<s<<endl;
+	 }
+	 return 0;
+}
